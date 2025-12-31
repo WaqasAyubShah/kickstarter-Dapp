@@ -55,11 +55,24 @@ contract FundMe{
     // }
 
     //Check price feed on chainlink for this
-    function getPrice() public {
+    function getPrice() public view returns (uint256) {
         //price feed contract hash: https://docs.chain.link/data-feeds/price-feeds/addresses?networkType=testnet&testnetPage=2 
         //Address 0x694AA1769357215DE4FAC081bf1f309aDC325306
         // we can work around abi by using interfaces.
         //ABI 
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+
+        (
+            /* uint80 roundID */,
+            int256 answer,
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
+        ) = priceFeed.latestRoundData();
+       // (,int256 price,,,) = priceFeed.latestRoundData;
+        //price of ETH in usdt
+        //2000,00,000,000 covert it to 18 dec...
+        return uint256(answer * 1e10);
     }
     function getConversionRate() public {}
 
