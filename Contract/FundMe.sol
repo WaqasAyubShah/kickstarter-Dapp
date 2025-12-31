@@ -45,10 +45,14 @@ import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.so
 
 contract FundMe{
     uint256 public minimumUsd = 5 * 1e18 ;
+    address[] public funders; 
+    mapping(address=> uint256) public addressToamountfunded; 
 
     //Write a function which will send fund to our smart contract
     function fund() public payable {
         require(getConversionRate(msg.value) >= minimumUsd,"Amount must be greater then 1 eth");
+        funders.push(msg.sender);
+        addressToamountfunded[msg.sender] = addressToamountfunded[msg.sender] + msg.value;
     }
     // //write a function which will withdraw fund to user wallet
     // function withDraw() public{
