@@ -44,11 +44,11 @@ import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.so
 // }
 
 contract FundMe{
-    uint256 public minimumUsd = 5;
+    uint256 public minimumUsd = 5 * 1e18 ;
 
     //Write a function which will send fund to our smart contract
     function fund() public payable {
-        require(msg.value >= 1e18,"Amount must be greater then 1 eth");
+        require(getConversionRate(msg.value) >= minimumUsd,"Amount must be greater then 1 eth");
     }
     // //write a function which will withdraw fund to user wallet
     // function withDraw() public{
@@ -74,7 +74,11 @@ contract FundMe{
         //2000,00,000,000 covert it to 18 dec...
         return uint256(answer * 1e10);
     }
-    function getConversionRate() public {}
+    function getConversionRate(uint256 ethAmount) public view returns(uint256){
+        uint256 ethPrice = getPrice();
+        uint256 ethAmouninUSD = (ethAmount * ethPrice)/1e18;
+        return ethAmouninUSD;
+    }
 
     function getVersion() public view returns(uint256){
         return AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306).version();
