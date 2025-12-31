@@ -62,6 +62,13 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withDraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -100,11 +107,11 @@
 			]
 		},
 		"Contract/FundMe.sol": {
-			"keccak256": "0x3932a5193d1d312144a5f107f7b2638180783507cf573bc69dd394a0fb1f4a56",
+			"keccak256": "0xe94837189684dc1a7d158b46ee740cde7cdbc27eb5c0b953f568fb7923d04515",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f047d86df482cb8dc2871cc2d254cd6456795db32b71d085dc73ca62a2634643",
-				"dweb:/ipfs/QmYNBSG4HNjQCMrcCBxhMk3tsDZGdTMAPMWzv3RupvKSAH"
+				"bzz-raw://34a4b5d0b85c44e5a85aa31b8e03c3eed4aa834cf37e445551427063d1bbd704",
+				"dweb:/ipfs/Qmb4sXFiQ2URYN9d3CyPrqLZefKdYujHz2i9SkGzK6tmpz"
 			]
 		},
 		"Contract/PriceConvertor.sol": {

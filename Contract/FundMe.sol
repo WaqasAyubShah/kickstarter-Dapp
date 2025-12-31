@@ -23,7 +23,13 @@ contract FundMe{
         funders.push(msg.sender);
         addressToamountfunded[msg.sender] = addressToamountfunded[msg.sender] + msg.value;
     }
-    // //write a function which will withdraw fund to user wallet
-    // function withDraw() public{
-    // }
+    //write a function which will withdraw fund to user wallet
+    function withDraw() public{
+        //now we have to go through funders array and withdraw the amount. we will use loops
+        for(uint fundIndex = 0; fundIndex < funders.length; fundIndex++)
+        {
+            address funder = funders[fundIndex];
+            addressToamountfunded[funder] = 0;
+        }
+    }
 }
