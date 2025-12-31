@@ -2,42 +2,46 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+//Also we can import the AggregartorV3Interface from chainlink repo
+
+import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
+
 //from where i got the interface, if you are cursious about it
 //here is the link: https://github.com/smartcontractkit/smart-contract-examples/blob/630d83e9be2ee27625b13986c8d9938c4523397d/pricefeed-golang/aggregatorv3/AggregatorV3Interface.sol
 //Although you can just search aggregatorV3Interface in chainlink repo and it will work.
 
-interface AggregatorV3Interface {
-  function decimals() external view returns (uint8);
+// interface AggregatorV3Interface {
+//   function decimals() external view returns (uint8);
 
-  function description() external view returns (string memory);
+//   function description() external view returns (string memory);
 
-  function version() external view returns (uint256);
+//   function version() external view returns (uint256);
 
-  // getRoundData and latestRoundData should both raise "No data present"
-  // if they do not have data to report, instead of returning unset values
-  // which could be misinterpreted as actual reported values.
-  function getRoundData(uint80 _roundId)
-    external
-    view
-    returns (
-      uint80 roundId,
-      int256 answer,
-      uint256 startedAt,
-      uint256 updatedAt,
-      uint80 answeredInRound
-    );
+//   // getRoundData and latestRoundData should both raise "No data present"
+//   // if they do not have data to report, instead of returning unset values
+//   // which could be misinterpreted as actual reported values.
+//   function getRoundData(uint80 _roundId)
+//     external
+//     view
+//     returns (
+//       uint80 roundId,
+//       int256 answer,
+//       uint256 startedAt,
+//       uint256 updatedAt,
+//       uint80 answeredInRound
+//     );
 
-  function latestRoundData()
-    external
-    view
-    returns (
-      uint80 roundId,
-      int256 answer,
-      uint256 startedAt,
-      uint256 updatedAt,
-      uint80 answeredInRound
-    );
-}
+//   function latestRoundData()
+//     external
+//     view
+//     returns (
+//       uint80 roundId,
+//       int256 answer,
+//       uint256 startedAt,
+//       uint256 updatedAt,
+//       uint80 answeredInRound
+//     );
+// }
 
 contract FundMe{
     uint256 public minimumUsd = 5;
