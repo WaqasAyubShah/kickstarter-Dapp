@@ -50,10 +50,10 @@
 	},
 	"sources": {
 		"Contract/SafeMath.sol": {
-			"keccak256": "0xf1de28fb764f0ef803fe37f9a807e5ba637d7ce558adaaedafaf4fc88ee15794",
+			"keccak256": "0xd466df32ff488f908847b00b3fcc6c0cc04d1019250e948b0380b29528f3a685",
 			"urls": [
-				"bzz-raw://b4f75bdc784732fe0f9b6ad7b15f49c364271b2cfffab2f4597ccd4539b4977a",
-				"dweb:/ipfs/QmTRDCHfjwD4c8rycXPAUz3ZMmpXMAqrK6tJFKNwdMg9qE"
+				"bzz-raw://d6b3b4b92109dcf4a5d4eb8a24a1305a1e9c4455a62488057e5c4acd2db5ed14",
+				"dweb:/ipfs/QmNktSQ8g3o6GCw9sxit84FS5Wu97Qd6kyVaHcW1CKFcmQ"
 			]
 		}
 	},
