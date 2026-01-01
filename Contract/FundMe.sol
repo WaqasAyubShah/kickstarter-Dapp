@@ -66,4 +66,12 @@ contract FundMe{
            revert Unauthorized();
         _; //order of _; matters 
     }
+
+    //recive & fallback 
+    receive() external payable {
+        fund();
+    }
+    fallback() external payable { 
+        fund();
+    }
 }
