@@ -29,8 +29,8 @@ contract FundMe{
         addressToamountfunded[msg.sender] = addressToamountfunded[msg.sender] + msg.value;
     }
     //write a function which will withdraw fund to user wallet
-    function withDraw() public{
-        require(msg.sender == owner, "only owner can withdraw");
+    function withDraw() public onlyOwner{
+        
         //now we have to go through funders array and withdraw the amount. we will use loops
         for(uint fundIndex = 0; fundIndex < funders.length; fundIndex++)
         {
@@ -50,6 +50,11 @@ contract FundMe{
         //call
         (bool callSuccess,) = payable(msg.sender).call{value: address(this).balance}("");
         require(callSuccess,"Call failed");
+    }
 
+    //modifier is a function which can be used in function declaration to use apply some condition.
+    modifier onlyOwner(){
+        require(msg.sender == owner, "only owner can withdraw");
+        _;
     }
 }
