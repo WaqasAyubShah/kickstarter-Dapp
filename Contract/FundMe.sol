@@ -12,10 +12,15 @@ import {PriceConvertor} from "./PriceConvertor.sol";
 
 contract FundMe{
     using PriceConvertor for uint256;
-
     uint256 public minimumUsd = 5 * 1e18 ;
     address[] public funders; 
     mapping(address=> uint256) public addressToamountfunded; 
+
+    address public owner;
+
+    constructor(){
+        owner = msg.sender;
+    }
 
     //Write a function which will send fund to our smart contract
     function fund() public payable {
@@ -25,6 +30,7 @@ contract FundMe{
     }
     //write a function which will withdraw fund to user wallet
     function withDraw() public{
+        require(msg.sender == owner, "only owner can withdraw");
         //now we have to go through funders array and withdraw the amount. we will use loops
         for(uint fundIndex = 0; fundIndex < funders.length; fundIndex++)
         {
