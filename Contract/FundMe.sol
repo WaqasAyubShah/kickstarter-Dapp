@@ -31,5 +31,19 @@ contract FundMe{
             address funder = funders[fundIndex];
             addressToamountfunded[funder] = 0;
         }
+        //rest the array 
+        funders = new address[](0);
+        //transfer
+        //send the amount to owner, transfer function fail if it not go through
+        payable(msg.sender).transfer(address(this).balance); 
+        
+        //send 
+        bool sendSuccess = payable(msg.sender).send(address(this).balance);
+        require(sendSuccess, "Send failed");
+
+        //call
+        (bool callSuccess,) = payable(msg.sender).call{value: address(this).balance}("");
+        require(callSuccess,"Call failed");
+
     }
 }
