@@ -12,7 +12,10 @@ import {PriceConvertor} from "./PriceConvertor.sol";
 
 contract FundMe{
     using PriceConvertor for uint256;
-    uint256 public minimumUsd = 5 * 1e18 ;
+    //use of constant, where we don't change the value of a varible.
+    uint256 public constant MINIMUM_USD = 5 * 1e18 ;
+    //by using constant keyword, we can save upto 1$ eht per transaction.
+
     address[] public funders; 
     mapping(address=> uint256) public addressToamountfunded; 
 
@@ -24,7 +27,7 @@ contract FundMe{
 
     //Write a function which will send fund to our smart contract
     function fund() public payable {
-        require(msg.value.getConversionRate() >= minimumUsd,"Amount must be greater then 1 eth");
+        require(msg.value.getConversionRate() >= MINIMUM_USD,"Amount must be greater then 1 eth");
         funders.push(msg.sender);
         addressToamountfunded[msg.sender] = addressToamountfunded[msg.sender] + msg.value;
     }
