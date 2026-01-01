@@ -2,6 +2,8 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
+error Unauthorized();
+
 //Also we can import the AggregartorV3Interface from chainlink repo
 
 import {PriceConvertor} from "./PriceConvertor.sol";
@@ -59,7 +61,9 @@ contract FundMe{
 
     //modifier is a function which can be used in function declaration to use apply some condition.
     modifier onlyOwner(){
-        require(msg.sender == i_owner, "only owner can withdraw");
+        //require(msg.sender == i_owner, "only owner can withdraw");
+        if(msg.sender != i_owner)
+           revert Unauthorized();
         _; //order of _; matters 
     }
 }
