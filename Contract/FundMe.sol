@@ -19,10 +19,12 @@ contract FundMe{
     address[] public funders; 
     mapping(address=> uint256) public addressToamountfunded; 
 
-    address public owner;
+    //use of immutable
+    //Gas saved: 
+    address public immutable i_owner;
 
     constructor(){
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     //Write a function which will send fund to our smart contract
@@ -57,7 +59,7 @@ contract FundMe{
 
     //modifier is a function which can be used in function declaration to use apply some condition.
     modifier onlyOwner(){
-        require(msg.sender == owner, "only owner can withdraw");
-        _;
+        require(msg.sender == i_owner, "only owner can withdraw");
+        _; //order of _; matters 
     }
 }
