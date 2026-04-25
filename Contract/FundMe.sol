@@ -106,5 +106,7 @@ contract FundMe{
     }
     fallback() external payable { 
         fund();
+        
     }
+
 }
