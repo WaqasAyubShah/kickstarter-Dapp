@@ -20,7 +20,7 @@ library PriceConvertor{
 
         (
             /* uint80 roundID */,
-            
+
             int256 answer,
             /*uint startedAt*/,
             /*uint timeStamp*/,
@@ -107,7 +107,6 @@ contract FundMe{
     }
     fallback() external payable { 
         fund();
-
     }
 
 }
