@@ -103,6 +103,7 @@ contract FundMe{
 
     //receive & fallback 
     receive() external payable {
+      
         fund();
     }
     fallback() external payable { 
