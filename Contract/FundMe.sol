@@ -81,6 +81,7 @@ contract FundMe{
         //rest the array 
         funders = new address[](0);
         //transfer
+        
         //send the amount to owner, transfer function fail if it not go through
         payable(msg.sender).transfer(address(this).balance); 
         
